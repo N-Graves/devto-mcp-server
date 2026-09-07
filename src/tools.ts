@@ -5,8 +5,8 @@ import {
   type ToolDefinition,
   httpUrl,
   pageSize,
-} from "@nasdigital/mcp-server-core";
-import { callOperation, COVERED, resolveOperation } from "./dispatch.js";
+} from "@nasdigitaluk/mcp-server-core";
+import { createDispatcher, COVERED } from "./dispatch.js";
 import { OPERATIONS } from "./generated/operations.js";
 
 const EXCLUDED = OPERATIONS.filter((o) => o.status === "excluded");
@@ -53,6 +53,8 @@ const articleFields = {
 };
 
 export function buildTools(http: HttpClient): ToolDefinition<any>[] {
+  const dispatcher = createDispatcher(http);
+
   return [
     /* ── discovery ─────────────────────────────────────────────────────── */
     {
@@ -73,25 +75,8 @@ export function buildTools(http: HttpClient): ToolDefinition<any>[] {
           .default(false)
           .describe("Also show operations this server cannot reach, and why."),
       }),
-      handler: async ({ search, include_excluded }) => {
-        const pool = include_excluded ? OPERATIONS : COVERED;
-        const q = search?.toLowerCase();
-        const hits = q
-          ? pool.filter((o) =>
-              [o.id, o.path, o.summary, ...o.tags].join(" ").toLowerCase().includes(q),
-            )
-          : pool;
-        return {
-          total: hits.length,
-          operations: hits.map((o) => ({
-            id: o.id,
-            route: `${o.method} ${o.path}`,
-            summary: o.summary || undefined,
-            tags: o.tags,
-            ...(o.status === "excluded" ? { available: false, why: o.reason } : {}),
-          })),
-        };
-      },
+      handler: async ({ search, include_excluded }) =>
+        dispatcher.browse(search, include_excluded),
     },
 
     /* ── the generic caller ────────────────────────────────────────────── */
@@ -109,14 +94,8 @@ export function buildTools(http: HttpClient): ToolDefinition<any>[] {
           .describe("Path and query parameters, by name."),
         body: z.unknown().optional().describe("Request body for POST, PUT and PATCH."),
       }),
-      handler: async ({ operation_id, params, body }) => {
-        // Re-check the real action here so that MCP_READ_ONLY cannot be side-
-        // stepped by routing a write through the generic tool. The tool is
-        // declared "write" so a read-only server refuses it outright; this
-        // catches the inverse case, where a stricter policy needs the truth.
-        const op = resolveOperation(operation_id);
-        return callOperation(http, operation_id, params ?? {}, body);
-      },
+      handler: async ({ operation_id, params, body }) =>
+        dispatcher.call(operation_id, params ?? {}, body),
     },
 
     /* ── common path ───────────────────────────────────────────────────── */

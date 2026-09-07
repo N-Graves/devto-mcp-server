@@ -2,7 +2,7 @@
 /**
  * devto-mcp-server — a Model Context Protocol server for the Dev.to / Forem API.
  *
- *   DEVTO_API_KEY=... npx @nasdigital/devto-mcp
+ *   DEVTO_API_KEY=... npx @nasdigitaluk/devto-mcp
  *
  * Configuration:
  *   DEVTO_API_KEY        required. dev.to → Settings → Extensions → API Keys.
@@ -20,7 +20,7 @@ import {
   authorizerFromEnv,
   requireEnv,
   runServer,
-} from "@nasdigital/mcp-server-core";
+} from "@nasdigitaluk/mcp-server-core";
 import { buildTools } from "./tools.js";
 import { COVERED } from "./dispatch.js";
 import { OPERATIONS } from "./generated/operations.js";

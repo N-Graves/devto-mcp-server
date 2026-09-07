@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
-import { HttpClient, ToolError } from "@nasdigital/mcp-server-core";
+import { HttpClient, ToolError } from "@nasdigitaluk/mcp-server-core";
 import { buildTools } from "../src/tools.js";
-import { buildPath, callOperation, resolveOperation } from "../src/dispatch.js";
+import { createDispatcher } from "../src/dispatch.js";
 import { OPERATIONS_BY_ID } from "../src/generated/operations.js";
 
 /** Records what would have been sent, and answers with a canned body. */
@@ -26,29 +26,32 @@ const toolNamed = (http: HttpClient, name: string) => {
   return t;
 };
 
-describe("dispatch", () => {
-  it("refuses an unknown operation and suggests near matches", () => {
-    expect(() => resolveOperation("getArticl")).toThrow(/did you mean/i);
+/**
+ * The dispatcher's own behaviour - near matches, excluded reasons, path
+ * building - is covered in @nasdigitaluk/mcp-server-core. These check that
+ * THIS catalogue is wired to it correctly, which is a different question.
+ */
+describe("the Forem catalogue is wired to the dispatcher", () => {
+  it("refuses an unknown operation and suggests real Forem ids", () => {
+    const { http } = recordingClient();
+    expect(() => createDispatcher(http).resolve("getArticl")).toThrow(/getArticles/);
   });
 
-  it("refuses an excluded operation with the reason, not a bare no", () => {
+  it("gives Forem's own reason for an excluded operation", () => {
+    const { http } = recordingClient();
     const suspend = [...OPERATIONS_BY_ID.values()].find((o) => o.path.endsWith("/suspend"))!;
-    expect(() => resolveOperation(suspend.id)).toThrow(/moderator or admin privileges/i);
+    expect(() => createDispatcher(http).resolve(suspend.id)).toThrow(/moderator or admin privileges/i);
   });
 
-  it("names the missing path parameter rather than sending a literal brace", () => {
-    const op = OPERATIONS_BY_ID.get("getArticleById")!;
-    expect(() => buildPath(op, {})).toThrow(/needs the path parameter "id"/);
-  });
-
-  it("url-encodes path parameters", () => {
-    const op = OPERATIONS_BY_ID.get("getArticleById")!;
-    expect(buildPath(op, { id: "a b/c" })).toBe("/api/articles/a%20b%2Fc");
-  });
-
-  it("sends non-path arguments as query parameters", async () => {
+  it("resolves a real Forem route, prefix and all", async () => {
     const { http, calls } = recordingClient();
-    await callOperation(http, "getArticles", { tag: "typescript", per_page: 5 });
+    await createDispatcher(http).call("getArticleById", { id: 42 });
+    expect(calls[0]!.url).toContain("/api/articles/42");
+  });
+
+  it("passes Forem's documented query parameters through", async () => {
+    const { http, calls } = recordingClient();
+    await createDispatcher(http).call("getArticles", { tag: "typescript", per_page: 5 });
     expect(calls[0]!.url).toContain("tag=typescript");
     expect(calls[0]!.url).toContain("per_page=5");
   });
