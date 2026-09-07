@@ -6,14 +6,10 @@
  *
  * 139 operations: 49 reachable through this server,
  * 90 excluded with a stated reason.
- *
- * The coverage test compares this against the vendored spec, so an endpoint
- * Forem adds shows up as a test failure rather than as a README that has
- * quietly stopped being true.
  */
 import type { Operation } from "@nasdigital/mcp-server-core";
 
-export interface ForemOperation extends Operation {
+export interface CataloguedOperation extends Operation {
   tags: string[];
   summary: string;
   pathParams: string[];
@@ -21,7 +17,7 @@ export interface ForemOperation extends Operation {
   hasBody: boolean;
 }
 
-export const OPERATIONS: ForemOperation[] = [
+export const OPERATIONS: CataloguedOperation[] = [
   {
     "id": "getAdminConcepts",
     "method": "GET",
@@ -905,7 +901,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Creating, editing or awarding badges is an instance-administration action on Forem. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "deleteBadgeAchievementsId",
@@ -921,7 +917,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Creating, editing or awarding badges is an instance-administration action on Forem. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "getBadgeAchievementsId",
@@ -967,7 +963,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Creating, editing or awarding badges is an instance-administration action on Forem. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "deleteBadgesId",
@@ -983,7 +979,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Creating, editing or awarding badges is an instance-administration action on Forem. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "getBadgesId",
@@ -1015,7 +1011,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Creating, editing or awarding badges is an instance-administration action on Forem. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "getBillboards",
@@ -1029,7 +1025,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Billboards are instance-level advertising units, administered by the Forem operator rather than by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "postBillboards",
@@ -1043,7 +1039,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Billboards are instance-level advertising units, administered by the Forem operator rather than by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getBillboardsId",
@@ -1059,7 +1055,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Billboards are instance-level advertising units, administered by the Forem operator rather than by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "putBillboardsId",
@@ -1075,7 +1071,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Billboards are instance-level advertising units, administered by the Forem operator rather than by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "putBillboardsIdUnpublish",
@@ -1091,7 +1087,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Billboards are instance-level advertising units, administered by the Forem operator rather than by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getCommentsByArticleId",
@@ -1143,7 +1139,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Concepts are an instance-level taxonomy feature, not author-facing."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getConceptsId",
@@ -1161,7 +1157,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Concepts are an instance-level taxonomy feature, not author-facing."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "patchConceptsId",
@@ -1177,7 +1173,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Concepts are an instance-level taxonomy feature, not author-facing."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getConceptsIdArticles",
@@ -1197,7 +1193,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Concepts are an instance-level taxonomy feature, not author-facing."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getConceptsSearch",
@@ -1215,7 +1211,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Concepts are an instance-level taxonomy feature, not author-facing."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getEvents",
@@ -1231,7 +1227,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Instance events are created by the Forem operator, not by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "createEvent",
@@ -1245,7 +1241,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Instance events are created by the Forem operator, not by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "deleteEvent",
@@ -1261,7 +1257,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Instance events are created by the Forem operator, not by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getEventById",
@@ -1277,7 +1273,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Instance events are created by the Forem operator, not by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "updateEvent",
@@ -1293,7 +1289,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Instance events are created by the Forem operator, not by an author."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "patchFeedbackMessagesId",
@@ -1439,7 +1435,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Creating, editing or deleting an organisation requires instance administration. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "deleteOrganizationsId",
@@ -1455,7 +1451,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Creating, editing or deleting an organisation requires instance administration. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "getOrganizationById",
@@ -1487,7 +1483,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Creating, editing or deleting an organisation requires instance administration. The read endpoints are covered."
+    "reason": "Minting or awarding a badge, and creating or deleting an organisation, are instance-administration actions. The read endpoints are covered."
   },
   {
     "id": "getOrgArticles",
@@ -1551,7 +1547,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Static instance pages, administered by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "postPages",
@@ -1565,7 +1561,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Static instance pages, administered by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "deletePagesId",
@@ -1581,7 +1577,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Static instance pages, administered by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getPagesId",
@@ -1597,7 +1593,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Static instance pages, administered by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "putPagesId",
@@ -1613,7 +1609,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Static instance pages, administered by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getPodcastEpisodes",
@@ -1712,7 +1708,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Curated recommendation lists are administered at instance level."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "postRecommendedArticlesLists",
@@ -1726,7 +1722,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Curated recommendation lists are administered at instance level."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getRecommendedArticlesListsId",
@@ -1742,7 +1738,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Curated recommendation lists are administered at instance level."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "patchRecommendedArticlesListsId",
@@ -1758,7 +1754,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Curated recommendation lists are administered at instance level."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getSegments",
@@ -1772,7 +1768,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Audience segments are a Forem instance feature for billboard targeting, not available to a hosted dev.to author account."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "createSegment",
@@ -1786,7 +1782,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Audience segments are a Forem instance feature for billboard targeting, not available to a hosted dev.to author account."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "deleteSegment",
@@ -1802,7 +1798,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Audience segments are a Forem instance feature for billboard targeting, not available to a hosted dev.to author account."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getSegment",
@@ -1818,7 +1814,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Audience segments are a Forem instance feature for billboard targeting, not available to a hosted dev.to author account."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "addUsersToSegment",
@@ -1834,7 +1830,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Audience segments are a Forem instance feature for billboard targeting, not available to a hosted dev.to author account."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "removeUsersFromSegment",
@@ -1850,7 +1846,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Audience segments are a Forem instance feature for billboard targeting, not available to a hosted dev.to author account."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getUsersInSegment",
@@ -1866,7 +1862,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Audience segments are a Forem instance feature for billboard targeting, not available to a hosted dev.to author account."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getSubforems",
@@ -1880,7 +1876,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Subforems are an instance-level structure created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getSurveys",
@@ -1896,7 +1892,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Surveys are an instance feature, created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "postSurveys",
@@ -1910,7 +1906,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Surveys are an instance feature, created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "deleteSurveysIdOrSlug",
@@ -1926,7 +1922,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Surveys are an instance feature, created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getSurveyByIdOrSlug",
@@ -1942,7 +1938,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Surveys are an instance feature, created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "patchSurveysIdOrSlug",
@@ -1958,7 +1954,7 @@ export const OPERATIONS: ForemOperation[] = [
     "queryParams": [],
     "hasBody": true,
     "status": "excluded",
-    "reason": "Surveys are an instance feature, created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getSurveyPollTextResponses",
@@ -1976,7 +1972,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Surveys are an instance feature, created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getSurveyPollVotes",
@@ -1994,7 +1990,7 @@ export const OPERATIONS: ForemOperation[] = [
     ],
     "hasBody": false,
     "status": "excluded",
-    "reason": "Surveys are an instance feature, created by the Forem operator."
+    "reason": "An instance-level feature, created and administered by the Forem operator rather than by an author."
   },
   {
     "id": "getTags",
