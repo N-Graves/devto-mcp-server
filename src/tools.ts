@@ -5,7 +5,7 @@ import {
   type ToolDefinition,
   httpUrl,
   pageSize,
-} from "@nasdigital/mcp-server-core";
+} from "@nasdigitaluk/mcp-server-core";
 import { createDispatcher, COVERED } from "./dispatch.js";
 import { OPERATIONS } from "./generated/operations.js";
 

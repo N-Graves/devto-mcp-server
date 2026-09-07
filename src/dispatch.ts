@@ -7,7 +7,7 @@
  * file only supplies the catalogue and the name of the browse tool.
  */
 
-import { Dispatcher, type HttpClient } from "@nasdigital/mcp-server-core";
+import { Dispatcher, type HttpClient } from "@nasdigitaluk/mcp-server-core";
 import { OPERATIONS, type CataloguedOperation } from "./generated/operations.js";
 
 export const COVERED = OPERATIONS.filter((o) => o.status === "covered");

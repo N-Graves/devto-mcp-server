@@ -7,7 +7,7 @@
  * 139 operations: 49 reachable through this server,
  * 90 excluded with a stated reason.
  */
-import type { Operation } from "@nasdigital/mcp-server-core";
+import type { Operation } from "@nasdigitaluk/mcp-server-core";
 
 export interface CataloguedOperation extends Operation {
   tags: string[];

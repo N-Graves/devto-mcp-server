@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { HttpClient, ToolError } from "@nasdigital/mcp-server-core";
+import { HttpClient, ToolError } from "@nasdigitaluk/mcp-server-core";
 import { buildTools } from "../src/tools.js";
 import { createDispatcher } from "../src/dispatch.js";
 import { OPERATIONS_BY_ID } from "../src/generated/operations.js";
@@ -28,7 +28,7 @@ const toolNamed = (http: HttpClient, name: string) => {
 
 /**
  * The dispatcher's own behaviour - near matches, excluded reasons, path
- * building - is covered in @nasdigital/mcp-server-core. These check that
+ * building - is covered in @nasdigitaluk/mcp-server-core. These check that
  * THIS catalogue is wired to it correctly, which is a different question.
  */
 describe("the Forem catalogue is wired to the dispatcher", () => {

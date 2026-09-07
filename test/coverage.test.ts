@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { checkCoverage, formatCoverage, operationsFromOpenApi } from "@nasdigital/mcp-server-core";
+import { checkCoverage, formatCoverage, operationsFromOpenApi } from "@nasdigitaluk/mcp-server-core";
 import { OPERATIONS } from "../src/generated/operations.js";
 import { COVERED } from "../src/dispatch.js";
 

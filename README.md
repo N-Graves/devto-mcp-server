@@ -9,7 +9,7 @@ MIT licensed.
 ## Install
 
 ```bash
-npm install -g @nasdigital/devto-mcp
+npm install -g @nasdigitaluk/devto-mcp
 ```
 
 Get an API key from **dev.to → Settings → Extensions → API Keys**.
@@ -104,7 +104,7 @@ That is not hypothetical. This server was extracted from one where every write t
 
 ## Built on
 
-[`@nasdigital/mcp-server-core`](https://github.com/N-Graves/mcp-server-core) — the hardened fetch layer, pluggable authorization, error sanitisation and coverage checking shared across this family of servers.
+[`@nasdigitaluk/mcp-server-core`](https://github.com/N-Graves/mcp-server-core) — the hardened fetch layer, pluggable authorization, error sanitisation and coverage checking shared across this family of servers.
 
 ## Licence
 

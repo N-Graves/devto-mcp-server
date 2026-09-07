@@ -1,6 +1,9 @@
 {
-  "name": "@nasdigital/devto-mcp",
+  "name": "@nasdigitaluk/devto-mcp",
   "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Model Context Protocol server for the Dev.to (Forem) API. Complete, catalogued coverage of the author-facing surface, with every excluded endpoint listed and explained.",
   "type": "module",
   "main": "dist/index.js",
@@ -26,7 +29,7 @@
     "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {
-    "@nasdigital/mcp-server-core": "file:../mcp-server-core",
+    "@nasdigitaluk/mcp-server-core": "file:../mcp-server-core",
     "zod": "^3.24.1"
   },
   "devDependencies": {
